@@ -1,256 +1,65 @@
-<p align="center">
-  <img src="docs/social-preview.png" alt="Gander: take a gander at any file. Open source Android file viewer for PDF, DOCX, XLSX, PPTX, JPG, MP4, MP3 and Markdown. 100% offline, 5 MB APK, zero permissions, no ads or trackers.">
-</p>
+# 제이웹리더기
 
-<p align="center">
-  <a href="https://play.google.com/store/apps/details?id=com.arjun.gander&listing=github"><img src="docs/play-badge.png" alt="Get it on Google Play" height="80" align="middle"></a>
-  <a href="https://trendshift.io/repositories/98260"><img src="https://trendshift.io/api/badge/repositories/98260" alt="Trendshift: GitHub Trending, #8 Repository Of The Day" width="250" height="55" align="middle"></a>
-</p>
+제이웹리더기는 문서, 사진, 전자책 등 여러 형식의 파일을 한곳에서 열어 보는 안드로이드 앱입니다. 원본 오픈소스 앱 [Gander](https://github.com/mokshablr/gander)를 바탕으로 한국어 화면과 새로운 디자인을 적용했습니다.
 
-# Gander 🪿
+[최신 버전 다운로드](https://github.com/dusdk0098-tech/JYJ-/releases/latest) · [소스코드](https://github.com/dusdk0098-tech/JYJ-) · [페딧 웹사이트](https://pedit.kr)
 
-**Take a gander at any file.** A tiny, open source, fully offline **file viewer for Android** that opens
-PDF, Word (`.docx`), Excel, PowerPoint (`.pptx`), photos, videos, audio, Markdown, text, code
-and `.zip` archives in one app, with **zero permissions, no ads, no tracking and no internet
-access at all**.
+## 주요 기능
 
-[Join the mailing list](https://groups.google.com/g/gander-testers) for announcements, follow [@ArjunManiyani](https://x.com/ArjunManiyani) on X, or grab the APK from [Releases](../../releases/latest).
+- PDF와 Word 문서, 스프레드시트, 슬라이드, 이미지, 동영상, 오디오, 전자책 등을 열 수 있습니다.
+- 최근 파일과 사용자가 선택한 폴더를 살펴보고 파일 이름, 날짜 또는 크기로 정렬할 수 있습니다.
+- 다른 앱에서 파일을 공유하거나 ‘다른 앱으로 열기’를 이용할 수 있습니다.
+- 지원하는 문서에서 검색, 확대, 텍스트 복사, 인쇄와 이어 읽기를 사용할 수 있습니다. 형식에 따라 제공되는 기능은 다릅니다.
+- ZIP 파일의 목록을 살펴보고 내부 파일을 열 수 있으며, STL 3D 모델을 회전하고 확대할 수 있습니다.
+- 한국어 환경에서 앱의 안내와 메뉴를 한국어로 표시합니다. 흰색 배경과 하늘색을 활용한 화면을 제공합니다.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/mokshablr/gander)](../../releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/mokshablr/gander/total)](../../releases)
-[![Build](https://img.shields.io/github/actions/workflow/status/mokshablr/gander/build.yml?branch=main)](../../actions)
-![Min API](https://img.shields.io/badge/minSdk-26%20(Android%208)-brightgreen)
+## 지원하는 파일
 
-Every phone ships with a dozen half-viewers that bounce your documents to cloud services.
-Gander is the opposite: one small APK (about 5 MB) that renders everything **on the device**.
-It cannot phone home because it does not even hold the INTERNET permission.
+| 종류 | 주요 형식 |
+| --- | --- |
+| 문서 | PDF, Word, OpenDocument, RTF |
+| 스프레드시트 | Excel, CSV, ODS |
+| 슬라이드 | PPTX, PPSX, PPTM, POTX |
+| 이미지 | JPG, PNG, GIF, WebP, HEIC, SVG 등 |
+| 동영상과 오디오 | MP4, MKV, MP3, M4A, WAV 등 |
+| 전자책 | DRM이 없는 EPUB |
+| 그 밖의 파일 | Markdown, 텍스트, 코드, ZIP, STL |
 
-**[arjun.maniyani.com/gander](https://arjun.maniyani.com/gander/)** &middot;
-[Privacy policy](https://arjun.maniyani.com/gander/privacy.html)
+전체 확장자 목록은 [지원 파일 형식 안내](app/src/main/assets/file_types_ko.md)에서 볼 수 있습니다. 오래된 PowerPoint `.ppt` 형식은 지원하지 않습니다. 파일에 포함된 일부 차트나 이미지 등은 표시가 제한될 수 있습니다.
 
-<p align="center">
-  <img src="docs/demo.gif" width="300" alt="Gander demo: thumbnail recents, folder browsing, PDF, Word, Excel and Markdown viewing">
-</p>
+## 설치
 
-## Screenshots
+Android 8.0 이상에서 사용할 수 있습니다. [릴리스 페이지](https://github.com/dusdk0098-tech/JYJ-/releases/latest)에서 `JWebReader-2.7.apk`를 내려받아 설치하세요. 일부 문서 형식은 최신 Android 시스템 WebView가 필요할 수 있습니다.
 
-| Home: recents and folders | PDF | The same PDF, night mode |
-| :---: | :---: | :---: |
-| ![Recent files with thumbnail previews and granted folders](docs/screenshots/home.png) | ![PDF viewer rendering a site survey report with a photographic plate](docs/screenshots/pdf.png) | ![The same page with night mode on: the paper is black and the text white, the blue headings are still blue, and the photograph is left exactly as it was printed](docs/screenshots/pdf-night.png) |
+GitHub에서 직접 설치할 때 Google Play 프로텍트가 앱 검사를 요청하거나 삼성 기기에서 보안 경고가 표시될 수 있습니다. 삼성에 이 APK의 보안 검토를 요청했으며, 결과는 아직 확인되지 않았습니다. 경고가 표시되면 안내에 따라 검사 결과를 확인하세요.
 
-| Photos | Word (.docx) | PowerPoint (.pptx) | Excel (.xlsx) |
-| :---: | :---: | :---: | :---: |
-| ![Full-size photo in the zoomable image viewer](docs/screenshots/photo.png) | ![Word document viewer](docs/screenshots/docx.png) | ![PowerPoint slides viewer](docs/screenshots/pptx.png) | ![Excel spreadsheet viewer with sheet tabs](docs/screenshots/xlsx.png) |
+제이웹리더기는 원본 Gander와 다른 앱으로 설치되며, 기존 Gander 앱을 업데이트하거나 최근 파일과 폴더 접근 권한을 자동으로 가져오지 않습니다.
 
-## Features
+## 개인정보와 파일 접근
 
-- **One viewer for everything**: documents, spreadsheets, slides, images, video, audio, Markdown, code, 3D models
-- **Opens `.zip` files**: a zip lists like a folder, and each file in it opens in its usual viewer, read straight out of the archive with nothing unzipped to the phone
-- **Pinch zoom and smooth scrolling** everywhere, with deep zoom into huge photos (tiled decoding)
-- **Recent files** with thumbnail previews (image, video frame, PDF first page)
-- **Folder browsing** through one-time system grants, still without any storage permission. A folder's menu sorts its files by name, date or size, and filters them by kind
-- **Share sheet and "Open with" integration**: share a file from any app (chat, mail, browser) into Gander, or tap it in a file manager
-- **Find in document**: search inside PDF, Word, OpenDocument, Rich Text, every chapter of a book, every sheet of a workbook, slides, Markdown, text and code with match navigation
-- **Select and copy text in a PDF**, and read one with a screen reader
-- **Picks up where you left off**: a PDF reopens at the page you were reading and a book at the line, however you open it
-- **Night mode for PDFs and Word documents**: turns the page over for reading in the dark, keeping each colour's hue, turning scans and figures over with the text, and leaving photographs exactly as they were printed
-- **Word documents in pages**: a file saved in Word shows its pages where Word ended them, each with its own page number, and a page counter and Go to page as a PDF has
-- **Share and locate**: send the open file to any app, or jump to its folder in the file manager
-- **Print**: a PDF prints exactly as it is, and a Word, OpenDocument or Rich Text file prints the way Gander shows it, through Android's own print screen
-- **Private by construction**: no permissions, no INTERNET, no analytics, no accounts, nothing leaves the phone
-- **Checks its own promise**: the About screen asks Android what the app requests and shows you the answer, next to the full licence text for every bundled library
-- **Modern Android**: Material 3, dark mode, edge to edge, works on Android 8.0+
+앱은 Android의 파일 선택기와 ‘다른 앱으로 열기’를 통해 사용자가 선택한 파일에 접근합니다. 문서 처리는 기기에서 이루어지며, 배포 APK는 인터넷 권한을 요청하지 않습니다. 앱 안의 페딧 웹사이트 링크는 선택하면 외부 브라우저에서 열립니다.
 
-## Supported formats
+## 소스에서 빌드
 
-| Category | Formats | Renderer |
-| --- | --- | --- |
-| Documents | PDF | pdf.js, offline in a sandboxed WebView; on an older WebView, Android's own renderer in an isolated process |
-| | Word `.docx` `.docm` `.dotx` | docx-preview, offline in a sandboxed WebView |
-| | Word 97-2003 `.doc`, OpenDocument `.odt`, Rich Text `.rtf` | Gander's own readers, offline in a sandboxed WebView |
-| Books | EPUB `.epub`, without DRM | Gander's own reader, offline in a sandboxed WebView |
-| Spreadsheets | `.xlsx` `.xls` `.xlsm` `.xlsb` `.xltx` `.csv` `.ods` | SheetJS, offline |
-| Slides | PowerPoint `.pptx` `.ppsx` `.pptm` `.potx` | PPTXjs, offline |
-| Photos | JPG, PNG, WebP, HEIC/HEIF | Tiled deep-zoom image view, EXIF aware |
-| | GIF (animated), animated WebP and PNG, SVG, AVIF, ICO, BMP | WebView |
-| Video | MP4, M4V, MOV, MKV, WebM, 3GP, AVI, FLV, MPEG-TS | Media3 ExoPlayer |
-| Audio | MP3, M4A, AAC, FLAC, WAV, OGG, Opus, AMR | Media3 ExoPlayer |
-| Markdown | `.md` rendered as formatted HTML | marked + DOMPurify, offline |
-| Text and code | `.txt` `.json` `.xml` logs, subtitles (`.srt` `.vtt`), `.m3u` playlists, `.nfo`, most source files | Text viewer |
-| Archives | `.zip` | Listed like a folder, entries opened in place |
-| 3D models | STL `.stl`, binary and text | Gander's own WebGL viewer, offline |
-
-An `.stl`, the file 3D printers take, opens as a solid you can turn with one finger and zoom
-or move with two; a double tap puts it back. Its size in millimetres is shown underneath. A
-phone can open models of up to about half a million triangles for each gigabyte of memory it
-has.
-
-A `.zip` opens as a list laid out like a folder, and each file in it opens in the viewer it
-would get on its own, read straight out of the archive: nothing is unzipped or written to the
-phone. Password-protected entries open with their password, and names written by Windows zip
-tools in other languages are read as names rather than question marks, with **File name
-encoding** in the menu to correct a wrong guess.
-
-Anything else, including files with no extension at all, opens as text when its first bytes
-read as text, and says so under the file's name. One that does not read as text offers **View
-as text**, which shows the raw contents without renaming the file. Large files load 5 MB at a
-time with a **Show more** button, so they open instantly and can still be read end to end.
-
-Word 97-2003 `.doc`, OpenDocument `.odt` and Rich Text `.rtf` are read by code written for
-Gander rather than by a bundled library: text and formatting, headings, lists, tables,
-pictures, footnotes, headers and footers, in any script. The file's first bytes choose the
-reader, so a `.doc` that is Rich Text inside, as many are, opens all the same. Word 6 and
-Word 95 files show their text without formatting, and a Windows metafile picture shows a
-box saying it cannot be drawn.
-
-In a `.pptx`, a chart, diagram, picture, table or text that PPTXjs cannot draw, such as a
-doughnut or radar chart or an EMF or WMF picture, is left out, and a box in its place says
-what is missing. The rest of the slide is drawn.
-
-Legacy binary `.ppt` is not supported (no open-source renderer is both faithful and small
-enough to bundle); the app explains this and suggests re-saving as `.pptx`. Binary `.xls`
-works.
-
-## Install
-
-Runs on **Android 8.0 (API 26) and up**.
-
-Some formats need a recent Android System WebView, the browser engine built into the
-phone: Word documents 80, Markdown files 93 and PDFs 125 (May 2024). Any phone still
-receiving WebView updates is well past all three; if yours is not, Gander says so when
-you open the file rather than failing quietly.
-
-Below 125, on Android 9 and later, PDFs can open in a simple view: pictures of the
-pages, drawn by Android's own PDF renderer in an isolated process, without search, text
-selection or form entries, and before Android 15 without highlights or comments. Where
-the WebView can't be updated, as on Huawei phones without Google services, PDFs open
-there directly; elsewhere the card asking for an update offers it. A PDF inside a zip,
-or handed over by another app as a stream, keeps the card.
-
-**From Google Play**, which keeps it updated:
-[Gander on Google Play](https://play.google.com/store/apps/details?id=com.arjun.gander&listing=github).
-Already installed it from here? Open the listing and tap Update. Play moves your
-install over, recents and folder grants included, since both copies are signed with
-the same key.
-
-**From GitHub**, for phones without Google Play, or if you'd rather not use it:
-
-1. Download the latest APK from [Releases](../../releases/latest):
-   `Gander-x.y.apk` runs on every architecture, since the app ships no native libraries.
-2. Copy it to your phone, tap it, and allow "install unknown apps" when asked.
-3. Optional: Play Protect may warn about an unknown developer; that is what
-   sideloaded open source looks like. Tap "Install anyway".
-
-Updating: install the new APK over the old one; recents and folder grants survive.
-
-**Automatic updates without a store**: with
-[Obtainium](https://github.com/ImranR98/Obtainium) installed,
-[add Gander in one tap](https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.arjun.gander%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fmokshablr%2Fgander%22%2C%22author%22%3A%22mokshablr%22%2C%22name%22%3A%22Gander%22%7D),
-or add `https://github.com/mokshablr/gander` as an app source yourself. It follows the
-tagged GitHub releases here and updates Gander like a store would.
-
-**Verify before installing**: every release is signed with the same key, so you can
-confirm an APK really came from this repo. Obtainium can pin the fingerprint below,
-and for a file you have already downloaded:
+JDK 21 이상과 Android SDK 플랫폼 36이 필요합니다.
 
 ```sh
-apksigner verify --print-certs Gander-x.y.apk
+./gradlew assembleDebug
+./gradlew assembleRelease
 ```
 
-Signing certificate SHA-256:
+배포 빌드는 저장소에 별도로 구성된 서명 키가 없다면 서명되지 않습니다. 본인의 키로 서명한 APK는 이 저장소의 릴리스 APK를 덮어 설치할 수 없습니다. 개인 서명 키와 비밀번호는 공개 저장소에 올리지 마세요.
 
-```
-5B:5C:F6:4A:94:23:7C:D5:F0:E0:85:76:00:38:BC:1C:EB:DF:18:DA:BA:5C:B3:EA:CA:7C:15:9F:22:A7:E2:4B
-```
+## 제작 및 후원
 
-## How the zero-permission trick works
+- 제작: 조영진
+- 도움: Arjun Maniyani
+- 소스코드: [dusdk0098-tech/JYJ-](https://github.com/dusdk0098-tech/JYJ-)
 
-Gander receives files through the Storage Access Framework and "Open with" intents,
-so the OS hands it exactly the documents you chose and nothing else. Office formats
-render inside a locked-down WebView whose every request Gander answers itself:
-bundled JS libraries load from app assets, the document streams from the content
-URI, and anything else gets an empty 404. No network stack is ever touched, and the app does
-not declare the INTERNET permission, so there is nothing to audit or trust.
+커피 한 잔의 후원으로 불우이웃을 도와주세요.
 
-Folder browsing uses `ACTION_OPEN_DOCUMENT_TREE` grants. Note that Android itself
-refuses to grant the Downloads root to any app; grant Documents, DCIM or a
-subfolder of Downloads instead.
+농협 조영진 **352-0306-8434-63**
 
-## Build from source
+## 라이선스
 
-To build it yourself you need JDK 21+ and the Android SDK (platform 36). These are
-build requirements only. The installed app runs on Android 8.0 (API 26) and up.
-
-```sh
-./gradlew assembleDebug        # installable debug build
-./gradlew assembleRelease      # unsigned without a keystore
-```
-
-Release signing expects a local, untracked keystore at `keystore/gander.jks`,
-alias `gander`. Generate your own with:
-
-```sh
-keytool -genkeypair -keystore keystore/gander.jks -alias gander \
-  -keyalg RSA -keysize 2048 -validity 10000 \
-  -storepass gander-local -keypass gander-local -dname "CN=Gander"
-```
-
-That builds and signs with no further setup, because `gander-local` is the
-fallback password in `app/build.gradle.kts`. To use a different one, set it in
-`~/.gradle/gradle.properties` rather than in the build file:
-
-```properties
-GANDER_STORE_PASSWORD=…
-GANDER_KEY_PASSWORD=…
-```
-
-The keystore is gitignored on purpose: it is a personal signing key and must
-never land in a public repo. Neither should its password, which is why the real
-one lives outside the tree. Builds signed with your own key will not update an
-install of a release from here; the official signing certificate is above.
-
-## Architecture in one paragraph
-
-`ViewerActivity` routes by file extension first, MIME type second (`FileKind.kt`),
-into one of four surfaces: a tiled `SubsamplingScaleImageView` for photos, Media3
-ExoPlayer for video and audio, a sandboxed WebView for everything rendered by
-vendored JS libraries (`app/src/main/assets/viewer/`), PDF included, or a list
-(`ArchiveBrowser.kt`) for a `.zip`, whose entries `ArchiveProvider` serves back to
-those same surfaces without ever touching the disk. Documents
-are handed to the WebView whole. Where pdf.js can't run (`pdfRoute` in
-`WebViewFloor.kt`), a PDF's pages are drawn by the platform's `PdfRenderer` in an isolated
-process (`PdfRenderService`) and shown as pictures in that same WebView (`SimplePdf.kt`). The
-home screen (`MainActivity`) lists recents
-(persisted SAF grants) and granted folders (DocumentsContract child queries), with
-thumbnails generated off-thread and cached (`Thumbs.kt`), a PDF's by an isolated renderer of
-their own (`PdfThumbs.kt`).
-
-[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) has the rest: what the viewer accepts from other
-apps, how a document reaches the WebView, the channel between Kotlin and the pages, and what
-guards each constraint.
-
-Vendored viewer libraries and their licenses: pdf.js (Apache-2.0), JSZip (MIT),
-docx-preview (Apache-2.0), SheetJS CE (Apache-2.0), PPTXjs + divs2slides (MIT),
-jQuery 1.11 (MIT), D3 3.x + NVD3 (BSD/Apache), marked (MIT), DOMPurify
-(Apache-2.0/MPL). The app ships no native libraries.
-
-## Roadmap
-
-- F-Droid listing
-- Legacy `.ppt` support if a usable offline renderer appears
-- iOS companion (thin QuickLook wrapper)
-
-## Contributing
-
-Issues and small PRs are welcome, see [CONTRIBUTING.md](CONTRIBUTING.md).
-If Gander is useful to you, a star helps other people find it. There is a
-[sponsor page](https://github.com/sponsors/mokshablr) as well, though a good bug
-report is worth more.
-
-## License
-
-[MIT](LICENSE), Copyright (c) 2026 [Arjun Maniyani](https://arjun.maniyani.com/).
-Vendored viewer libraries keep their own licenses, listed above; all are
-MIT/Apache/BSD and compatible. The full text of every one of them ships inside
-the app, in `app/src/main/assets/licences.md`, reachable from About.
+이 프로젝트는 [MIT 라이선스](LICENSE)를 따릅니다. 원본 Gander의 저작권은 Arjun Maniyani에게 있습니다. 포함된 외부 라이브러리의 라이선스 전문은 앱 정보 화면과 [라이선스 안내](app/src/main/assets/licences.md)에서 확인할 수 있습니다.
