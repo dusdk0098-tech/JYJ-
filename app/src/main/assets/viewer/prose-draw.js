@@ -514,7 +514,7 @@ function vwProsePicture(prose, bytes, width, height, alt) {
   if (!type) {
     var box = document.createElement("span");
     box.className = "vw-nopicture";
-    box.textContent = "A picture in a format that cannot be shown here";
+    box.textContent = vwTranslate("A picture in a format that cannot be shown here");
     if (width > 24) box.style.width = vwProsePt(width);
     return box;
   }

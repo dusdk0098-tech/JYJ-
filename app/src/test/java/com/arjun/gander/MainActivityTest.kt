@@ -768,31 +768,24 @@ class MainActivityTest {
         get().findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.toolbar)
             .menu.findItem(R.id.action_play)
 
-    /**
-     * A copy installed from an APK is offered the switch to Play, whose listing updates it
-     * in place, and is never asked to rate, since Play takes ratings only from its own copies.
-     */
     @Test
-    fun aCopyFromGitHubIsOfferedTheSwitchToPlay() {
+    fun aCopyFromGitHubDoesNotOfferTheOriginalPlayListing() {
         shadowOf(context.packageManager).setInstallSourceInfo(
             context.packageName, "com.android.chrome", "com.google.android.packageinstaller"
         )
         val item = home().playItem()
 
-        assertThat(item.isVisible).isTrue()
-        assertThat(item.title.toString()).isEqualTo(context.getString(R.string.switch_to_play))
+        assertThat(item.isVisible).isFalse()
     }
 
-    /** Google Play's own copy keeps Rate in the same place. */
     @Test
-    fun playsOwnCopyIsAskedToRate() {
+    fun aPlayInstalledCopyDoesNotOfferTheOriginalPlayListing() {
         shadowOf(context.packageManager).setInstallSourceInfo(
             context.packageName, "com.android.vending", "com.android.vending"
         )
         val item = home().playItem()
 
-        assertThat(item.isVisible).isTrue()
-        assertThat(item.title.toString()).isEqualTo(context.getString(R.string.rate_app))
+        assertThat(item.isVisible).isFalse()
     }
 
     /** The switch opens Gander's listing in the Play Store app, where Update does the move. */

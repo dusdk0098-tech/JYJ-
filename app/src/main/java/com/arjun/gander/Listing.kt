@@ -97,11 +97,9 @@ internal val ZIP_BADGE = "ZIP" to DIR_COLOR
  * Material inverts primary for dark mode, to #FFB39E, and the label on every
  * badge is a hardcoded white in row_item.xml: a white "+" on that measured
  * 1.72:1, worse than the amber DIR badge this release exists partly to fix.
- * Pinned to the light tone it stays 6.54:1 in both themes, and against the night
- * surface it sits at 2.83 against the DOC badge's 3.22, so it reads as a shape
- * exactly like its neighbours.
+ * Pinned to the light tone it stays 6.26:1 in both themes.
  */
-internal val ADD_COLOR = 0xFFAF2D18.toInt()
+internal val ADD_COLOR = 0xFF286689.toInt()
 
 /** The two or three letters, and the colour behind them, for a file. */
 internal fun badgeFor(name: String, mime: String?): Pair<String, Int> {

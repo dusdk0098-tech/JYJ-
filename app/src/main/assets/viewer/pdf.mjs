@@ -2034,7 +2034,7 @@ function vwAskPassword(updatePassword, reason) {
 
   var title = document.createElement("div");
   title.className = "vw-ask-title";
-  title.textContent = "This PDF is password protected";
+  title.textContent = vwTranslate("This PDF is password protected");
   el.appendChild(title);
 
   /*
@@ -2059,14 +2059,14 @@ function vwAskPassword(updatePassword, reason) {
     retryNote.id = "vw-pw-alert";
     retryNote.className = "vw-ask-alert";
     retryNote.setAttribute("role", "alert");
-    retryNote.textContent = "That password did not work.";
+    retryNote.textContent = vwTranslate("That password did not work.");
     el.appendChild(retryNote);
   }
 
   var label = document.createElement("label");
   label.className = "vw-ask-label";
   label.htmlFor = "vw-pw";
-  label.textContent = "Enter its password to open it.";
+  label.textContent = vwTranslate("Enter its password to open it.");
   el.appendChild(label);
 
   /* A form, not a bare button, so the on-screen keyboard's Go key submits too. */
@@ -2087,7 +2087,7 @@ function vwAskPassword(updatePassword, reason) {
   var btn = document.createElement("button");
   btn.type = "submit";
   btn.className = "vw-ask-btn";
-  btn.textContent = "Open";
+  btn.textContent = vwTranslate("Open");
 
   row.appendChild(input);
   row.appendChild(btn);

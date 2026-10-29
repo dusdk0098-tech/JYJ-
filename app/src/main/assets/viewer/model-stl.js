@@ -49,8 +49,10 @@ var VW_STL_LONGEST_WORD = 1024 * 1024;
 var VW_STL_TEN = [1, 1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8, 1e9, 1e10, 1e11, 1e12, 1e13,
   1e14, 1e15, 1e16, 1e17, 1e18, 1e19, 1e20, 1e21, 1e22];
 
-var VW_STL_NOT_STL = "It does not begin the way an STL file does: as text starting with " +
-  "the word solid, or as a binary header followed by a count of triangles.";
+var VW_STL_NOT_STL = vwKorean
+  ? "STL 파일의 형식이 아닙니다. 텍스트 형식은 solid로 시작하고 바이너리 형식은 삼각형 수가 헤더 뒤에 있어야 합니다."
+  : "It does not begin the way an STL file does: as text starting with " +
+    "the word solid, or as a binary header followed by a count of triangles.";
 
 /*
  * Reads an STL as it arrives.

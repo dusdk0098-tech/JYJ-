@@ -150,6 +150,7 @@ class MainActivity : AppCompatActivity() {
 
         toolbar = findViewById(R.id.toolbar)
         lockup = findViewById(R.id.lockup)
+        findViewById<View>(R.id.peditLink).setOnClickListener { openUrl(getString(R.string.pedit_url)) }
         toolbar.setNavigationOnClickListener { backCallback.handleOnBackPressed() }
         // render() rewrites the title and navigation icon on every resume and on
         // every folder change, but never touches the menu, so inflating once here
@@ -346,7 +347,10 @@ class MainActivity : AppCompatActivity() {
 
         view.findViewById<View>(R.id.aboutFileTypes).setOnClickListener {
             dialog.dismiss()
-            openBundledPage(FILE_TYPES_ASSET, R.string.file_types_file_name, R.string.file_types_failed)
+            val korean = resources.configuration.locales[0].language == "ko"
+            val asset = if (korean) "file_types_ko.md" else FILE_TYPES_ASSET
+            val name = if (korean) R.string.file_types_korean_file_name else R.string.file_types_file_name
+            openBundledPage(asset, name, R.string.file_types_failed)
         }
         view.findViewById<View>(R.id.aboutLicences).setOnClickListener {
             dialog.dismiss()
@@ -464,6 +468,7 @@ class MainActivity : AppCompatActivity() {
         // rather than one element that moves.
         toolbar.title = here?.label.orEmpty()
         lockup.visibility = if (here == null) View.VISIBLE else View.GONE
+        findViewById<View>(R.id.donationFooter).visibility = if (here == null) View.VISIBLE else View.GONE
         toolbar.navigationIcon =
             if (here == null) null
             else androidx.appcompat.content.res.AppCompatResources.getDrawable(this, R.drawable.ic_back)
@@ -472,7 +477,7 @@ class MainActivity : AppCompatActivity() {
         val inFolder = here != null
         toolbar.menu.findItem(R.id.action_sort)?.isVisible = inFolder
         toolbar.menu.findItem(R.id.action_filter)?.isVisible = inFolder
-        toolbar.menu.findItem(R.id.action_play)?.isVisible = !inFolder
+        toolbar.menu.findItem(R.id.action_play)?.isVisible = false
         toolbar.menu.findItem(R.id.action_share_app)?.isVisible = !inFolder
         toolbar.menu.findItem(R.id.action_about)?.isVisible = !inFolder
 

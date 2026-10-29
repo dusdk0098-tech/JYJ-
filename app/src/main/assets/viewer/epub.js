@@ -376,7 +376,9 @@ var vwEpub = (function () {
 
   function bytes(path) {
     var file = entry(path);
-    return file ? file.async("uint8array") : Promise.reject(new Error("The book has no " + path));
+    return file ? file.async("uint8array") : Promise.reject(new Error(
+      vwKorean ? "책에 필요한 파일이 없습니다: " + path : "The book has no " + path
+    ));
   }
 
   /*
@@ -967,7 +969,7 @@ var vwEpub = (function () {
       // One chapter that cannot be read leaves the rest of the book readable
       var holder = document.createElement("body");
       var said = document.createElement("p");
-      said.textContent = "This part of the book could not be read.";
+      said.textContent = vwTranslate("This part of the book could not be read.");
       holder.appendChild(said);
       return { body: holder, html: {}, own: {}, styles: [], drawn: null };
     }).then(function (made) {
@@ -2067,7 +2069,7 @@ var vwEpub = (function () {
   function showLink(address) {
     if (address) {
       linkAddress.textContent = address;
-      linkCopy.textContent = "Copy address";
+      linkCopy.textContent = vwTranslate("Copy address");
       linkBox.hidden = false;
       linkCopy.focus({ preventScroll: true });
     } else {
@@ -2091,7 +2093,7 @@ var vwEpub = (function () {
     chosen.addRange(range);
     function done() {
       chosen.removeAllRanges();
-      linkCopy.textContent = "Copied";
+      linkCopy.textContent = vwTranslate("Copied");
     }
     var did = false;
     try { did = document.execCommand("copy"); } catch (e) { /* the newer way, then */ }

@@ -1045,7 +1045,8 @@ function odtPictureBytes(state, image) {
 function odtParse(xml, what) {
   var doc = new DOMParser().parseFromString(xml, "application/xml");
   if (doc.getElementsByTagName("parsererror").length) {
-    throw new Error("The " + what + " inside this document is damaged.");
+    throw new Error(vwKorean ? "문서의 " + (what === "styles" ? "서식" : "텍스트") + " 데이터가 손상되었습니다."
+      : "The " + what + " inside this document is damaged.");
   }
   return doc;
 }

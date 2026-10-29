@@ -315,7 +315,7 @@
     s.failed = true;
     var note = document.createElement("div");
     note.className = "pg-note";
-    note.textContent = "This page could not be drawn";
+    note.textContent = vwTranslate("This page could not be drawn");
     s.box.appendChild(note);
     if (!shown) {
       shown = true;
@@ -503,8 +503,9 @@
     if (count < total) {
       var cut = document.createElement("div");
       cut.className = "vw-cut";
-      cut.textContent =
-        "The simple view shows the first " + count + " of this PDF's " + total + " pages.";
+      cut.textContent = vwKorean
+        ? "간단 보기에서 전체 " + total + "쪽 중 처음 " + count + "쪽을 표시합니다."
+        : "The simple view shows the first " + count + " of this PDF's " + total + " pages.";
       pages.appendChild(cut);
     }
     /* A reopened document goes straight to its page, which is then the first one drawn. Checked

@@ -4,6 +4,116 @@ var vwParams = new URLSearchParams(location.search);
 var vwName = vwParams.get("name") || "file";
 var vwExt = (vwParams.get("ext") || "").toLowerCase();
 
+var vwKorean = vwParams.get("lang") === "ko";
+var vwKoreanText = {
+  "Loading…": "불러오는 중…", "Rendering…": "표시하는 중…",
+  "Rendering document…": "문서를 표시하는 중…", "Opening document…": "문서를 여는 중…",
+  "Loading spreadsheet…": "스프레드시트를 불러오는 중…", "Rendering slides…": "슬라이드를 표시하는 중…",
+  "Opening book…": "책을 여는 중…", "Opening model…": "모델을 여는 중…",
+  "Contents": "목차", "Previous": "이전", "Next": "다음", "Close": "닫기",
+  "Book": "책", "Text": "텍스트", "Document": "문서", "Presentation": "프레젠테이션",
+  "Word document": "Word 문서", "PDF document": "PDF 문서", "Spreadsheet": "스프레드시트",
+  "Image": "이미지", "Unknown format": "알 수 없는 형식",
+  "Copy address": "주소 복사", "Copied": "복사됨", "Copy": "복사", "Open": "열기",
+  "Show more": "더 보기", "View as text": "텍스트로 보기", "Selected cell": "선택한 셀",
+  "Cell": "셀", "Sheets": "시트", "Empty": "비어 있음", "3D model": "3D 모델",
+  "This link leaves the book": "이 링크는 책 외부로 연결됩니다",
+  "Gander opens no web address. Copy it to open it in a browser.": "제이웹리더기는 웹 주소를 열지 않습니다. 브라우저에서 열려면 주소를 복사하세요.",
+  "Gander doesn't recognize this format": "제이웹리더기에서 이 형식을 인식할 수 없습니다",
+  "If it isn't text, you'll see random characters.": "텍스트 파일이 아니면 알아볼 수 없는 문자가 표시됩니다.",
+  "This is a legacy Office format (.ppt). If you re-save it as .pptx, Gander can display it.": "이 파일은 이전 Office 형식(.ppt)입니다. .pptx로 다시 저장하면 제이웹리더기에서 볼 수 있습니다.",
+  "This PDF is password protected": "비밀번호로 보호된 PDF입니다",
+  "That password did not work.": "비밀번호가 올바르지 않습니다.",
+  "Enter its password to open it.": "파일을 열려면 비밀번호를 입력하세요.",
+  "Could not render this Word document": "이 Word 문서를 표시할 수 없습니다",
+  "Could not open this document": "이 문서를 열 수 없습니다",
+  "Could not render this PDF": "이 PDF를 표시할 수 없습니다",
+  "Could not render this presentation": "이 프레젠테이션을 표시할 수 없습니다",
+  "Could not render this Markdown file": "이 Markdown 파일을 표시할 수 없습니다",
+  "Could not display this image": "이 이미지를 표시할 수 없습니다",
+  "Could not open this book": "이 책을 열 수 없습니다",
+  "Could not read the rest of this file": "파일의 나머지 부분을 읽을 수 없습니다",
+  "Could not read this file": "이 파일을 읽을 수 없습니다",
+  "Could not open this spreadsheet": "이 스프레드시트를 열 수 없습니다",
+  "Something went wrong while rendering": "표시하는 동안 문제가 발생했습니다",
+  "This page could not be drawn": "이 페이지를 표시할 수 없습니다",
+  "This part of the book could not be read.": "책의 이 부분을 읽을 수 없습니다.",
+  "This book is locked": "잠긴 책입니다",
+  "It is not an EPUB, or the file is damaged.": "EPUB 파일이 아니거나 파일이 손상되었습니다.",
+  "The book lists no chapters.": "책에 장이 없습니다.",
+  "The book does not say where its chapters are listed.": "책에 장의 위치가 표시되어 있지 않습니다.",
+  "One of the book's own files is not sound XML.": "책 내부의 XML 파일이 올바르지 않습니다.",
+  "This PDF is protected in a way Gander cannot open": "이 PDF의 보호 방식은 지원되지 않습니다",
+  "This PDF could not be unlocked": "이 PDF의 잠금을 해제할 수 없습니다",
+  "This file is not a PDF that can be read": "읽을 수 있는 PDF 파일이 아닙니다",
+  "This PDF could not be read to the end": "이 PDF를 끝까지 읽을 수 없습니다",
+  "This PDF could not be read": "이 PDF를 읽을 수 없습니다",
+  "This PDF needs a password": "이 PDF에는 비밀번호가 필요합니다",
+  "The simple view, which this phone gets for PDFs, can't open a PDF that needs one.": "이 기기의 PDF 간단 보기에서는 비밀번호가 필요한 PDF를 열 수 없습니다.",
+  "It may be damaged, or made in a way the simple view can't draw.": "파일이 손상되었거나 간단 보기에서 지원하지 않는 형식일 수 있습니다.",
+  "Gander could not read the file it was given. Opening it again usually settles this.": "파일을 읽을 수 없습니다. 다시 열면 해결되는 경우가 많습니다.",
+  "Its renderer stopped.": "문서 표시 프로그램이 중지되었습니다.",
+  "This is not a Word document.": "Word 문서가 아닙니다.",
+  "This is not a Word document: it has no text inside it.": "Word 문서가 아닙니다. 파일에 텍스트가 없습니다.",
+  "This document is protected by a password, and Gander cannot open password-protected Word documents.": "비밀번호로 보호된 Word 문서는 열 수 없습니다.",
+  "This Word document is damaged: its table stream is missing.": "Word 문서가 손상되어 필요한 데이터가 없습니다.",
+  "This document is protected by a password, and Gander cannot open password-protected OpenDocument files.": "비밀번호로 보호된 OpenDocument 파일은 열 수 없습니다.",
+  "It does not begin the way an OpenDocument, Rich Text or Word 97-2003 file does. If it was saved by an older Word, Word 2 say, Gander cannot read it; re-saving it in any of those three formats will help.": "OpenDocument, 서식 있는 텍스트 또는 Word 97-2003 형식이 아닙니다. 이전 버전의 Word 파일이라면 이 세 형식 중 하나로 다시 저장해 주세요.",
+  "This Word document is damaged.": "Word 문서가 손상되었습니다.",
+  "This Word document is too large to open here.": "Word 문서가 너무 커서 열 수 없습니다.",
+  "This document is too large to open here.": "문서가 너무 커서 열 수 없습니다.",
+  "This file has no document inside it.": "파일에 문서가 없습니다.",
+  "This is not an OpenDocument text document.": "OpenDocument 텍스트 문서가 아닙니다.",
+  "This document is nested too deeply to read.": "문서의 중첩 구조가 너무 깊어 읽을 수 없습니다.",
+  "The workbook has no sheets": "통합 문서에 시트가 없습니다",
+  "This model is too large to show": "모델이 너무 커서 표시할 수 없습니다",
+  "Could not show this model": "이 모델을 표시할 수 없습니다",
+  "This model is empty": "모델이 비어 있습니다",
+  "There are no triangles in it to draw.": "표시할 삼각형이 없습니다.",
+  "The phone ran out of graphics memory while reading it.": "파일을 읽는 동안 그래픽 메모리가 부족해졌습니다.",
+  "The file is empty.": "파일이 비어 있습니다.",
+  "3D models cannot be shown on this phone": "이 기기에서 3D 모델을 표시할 수 없습니다",
+  "Gander draws them with WebGL, and Android System WebView has turned WebGL off on this phone, which it does when the phone's graphics driver is known to misbehave. An update to Android System WebView can turn it back on.": "이 기기에서는 그래픽 드라이버 문제로 WebGL이 꺼져 있습니다. Android System WebView를 업데이트하면 다시 사용할 수 있습니다.",
+  "A chart that cannot be shown here": "여기에 표시할 수 없는 차트",
+  "A table that cannot be shown here": "여기에 표시할 수 없는 표",
+  "A diagram that cannot be shown here": "여기에 표시할 수 없는 다이어그램",
+  "An object that cannot be shown here": "여기에 표시할 수 없는 개체",
+  "A picture that cannot be shown here": "여기에 표시할 수 없는 그림",
+  "A picture in a format that cannot be shown here": "여기에 표시할 수 없는 형식의 그림",
+  "A shape that cannot be shown here": "여기에 표시할 수 없는 도형",
+  "Chart": "차트", "Picture": "그림",
+  "A chart Gander can't draw yet": "제이웹리더기에서 아직 표시할 수 없는 차트",
+  "A picture in a format Gander can't show": "제이웹리더기에서 표시할 수 없는 형식의 그림",
+  "It is protected against copying (DRM), so only the app of the shop or library it came from can open it.": "복사 방지(DRM)가 적용되어 구매하거나 대여한 곳의 앱에서만 열 수 있습니다.",
+  "It is encrypted, but not with the password scheme its renderer reads, so there is nothing you could type here that would open it. Every other format Gander opens still works.": "지원하지 않는 방식으로 암호화되어 비밀번호를 입력해도 열 수 없습니다. 다른 형식의 파일은 열 수 있습니다.",
+  "The password was not accepted. If the file opens elsewhere, its protection is of a kind Gander cannot read yet.": "비밀번호가 맞지 않거나 아직 지원하지 않는 보호 방식입니다.",
+  "It is either damaged or not a PDF at all, whatever it happens to be named. Every other format Gander opens still works.": "파일이 손상되었거나 PDF 형식이 아닙니다. 다른 형식의 파일은 열 수 있습니다.",
+  "Gander lost access to the file part way through loading it. Opening it again usually settles this.": "파일을 불러오는 중 접근 권한이 사라졌습니다. 다시 열면 해결되는 경우가 많습니다.",
+  "This .pptx may use features the built-in renderer does not understand yet.": "이 PPTX에는 아직 지원하지 않는 기능이 포함되어 있을 수 있습니다.",
+  "Open in simple view": "간단 보기로 열기",
+  "Shows the pages as pictures, without search, text selection or form entries.": "페이지를 이미지로 표시합니다. 검색, 텍스트 선택 및 양식 입력은 사용할 수 없습니다."
+};
+function vwTranslate(text) {
+  if (!vwKorean || !text) return text;
+  if (vwKoreanText[text]) return vwKoreanText[text];
+  var message = text.replace(/^Error: /, "");
+  if (vwKoreanText[message]) return vwKoreanText[message];
+  var http = /^Could not read the file \(HTTP (\d+)\)$/.exec(message);
+  if (http) return "파일을 읽을 수 없습니다 (HTTP " + http[1] + ").";
+  return text;
+}
+if (vwKorean) document.addEventListener("DOMContentLoaded", function () {
+  document.title = vwTranslate(document.title);
+  var selectors = "#vw-status, #moreBtn, #asText, #caveat, .card h2, " +
+    "#epub-contents-open, #epub-prev, #epub-next, #epub-contents-title, " +
+    "#epub-contents-close, #epub-link-title, .epub-link-note, #epub-link-close, #epub-link-copy";
+  document.querySelectorAll(selectors).forEach(function (el) {
+    el.textContent = vwTranslate(el.textContent);
+  });
+  document.querySelectorAll("#cellbar [aria-label], #cellbar[aria-label], #tabs[aria-label], #model[aria-label]")
+    .forEach(function (el) { el.setAttribute("aria-label", vwTranslate(el.getAttribute("aria-label"))); });
+});
+
 function vwStatus(msg) {
   var el = document.getElementById("vw-status");
   if (!el) {
@@ -13,7 +123,7 @@ function vwStatus(msg) {
     document.body.insertBefore(el, document.body.firstChild);
   }
   el.className = "vw-status";
-  el.textContent = msg;
+  el.textContent = vwTranslate(msg);
   el.style.display = "";
 }
 
@@ -34,10 +144,10 @@ function vwError(title, detail) {
   el.innerHTML = "";
   var t = document.createElement("div");
   t.className = "vw-error-title";
-  t.textContent = title;
+  t.textContent = vwTranslate(title);
   var d = document.createElement("div");
   d.className = "vw-error-detail";
-  d.textContent = detail || "";
+  d.textContent = vwTranslate(detail || "");
   el.appendChild(t);
   el.appendChild(d);
 }
@@ -84,6 +194,14 @@ function vwWebViewTooOld(what) {
  * fail as well: on the WebView 64 of issue #31, PDFs, Word documents and Markdown all did.
  */
 function vwNeedsNewerWebView(what, have, needs, locked) {
+  if (vwKorean) {
+    var detail = locked
+      ? "이 기기의 브라우저 엔진은 제조업체에서 제공하며 업데이트하거나 교체할 수 없습니다."
+      : "Android System WebView를 업데이트한 후 파일을 다시 열어 주세요.";
+    if (have && needs) detail = "필요한 버전: " + needs + " 이상, 현재 버전: " + have + ". " + detail;
+    vwError("이 파일을 표시하려면 최신 브라우저 엔진이 필요합니다", detail);
+    return;
+  }
   if (locked) {
     vwError(
       what + " cannot be shown on this phone",

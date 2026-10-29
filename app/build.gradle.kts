@@ -11,7 +11,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.arjun.gander"
+        applicationId = "kr.pedit.jwebreader"
         minSdk = 26
         targetSdk = 36
         versionCode = 35

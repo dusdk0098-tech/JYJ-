@@ -932,9 +932,9 @@ Sheet.prototype.artBlock = function () {
       el = document.createElement("div");
       el.className = "vw-art-missing";
       var name = document.createElement("b");
-      name.textContent = item.kind === "chart" ? (item.title || "Chart") : "Picture";
+      name.textContent = item.kind === "chart" ? (item.title || vwTranslate("Chart")) : vwTranslate("Picture");
       var why = document.createElement("span");
-      why.textContent = item.kind === "chart" ? "A chart Gander can't draw yet" : "A picture in a format Gander can't show";
+      why.textContent = vwTranslate(item.kind === "chart" ? "A chart Gander can't draw yet" : "A picture in a format Gander can't show");
       el.appendChild(name);
       el.appendChild(why);
     }
@@ -1437,7 +1437,7 @@ vwFetchDoc("buffer")
       var text = sheet.text(cell);
       valueEl.textContent = text;
       valueEl.classList.toggle("vw-cb-none", !text);
-      if (!text) valueEl.textContent = "Empty";
+      if (!text) valueEl.textContent = vwTranslate("Empty");
       moreEl.textContent = "";
       if (cell && cell.f) moreEl.appendChild(line("vw-cb-formula", "", "=" + cell.f));
       else if (cell && (cell.t === "n" || cell.t === "d") && cell.v !== undefined) {

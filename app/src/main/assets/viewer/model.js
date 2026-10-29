@@ -196,8 +196,11 @@ function vwModelMaxTriangles() {
 function vwModelTooLarge(triangles, most) {
   return vwModelProblem(
     "This model is too large to show",
-    "Gander draws up to " + vwModelCount(most) + " triangles on a phone with this much " +
-    "memory, and this model has " + (triangles > 0 ? vwModelCount(triangles) : "more") + "."
+    vwKorean
+      ? "이 기기에서는 삼각형을 최대 " + vwModelCount(most) + "개까지 표시할 수 있습니다. 이 모델은 " +
+        (triangles > 0 ? vwModelCount(triangles) + "개입니다." : "그보다 큽니다.")
+      : "Gander draws up to " + vwModelCount(most) + " triangles on a phone with this much " +
+        "memory, and this model has " + (triangles > 0 ? vwModelCount(triangles) : "more") + "."
   );
 }
 
@@ -262,7 +265,7 @@ function vwModelRead(run) {
       if (run !== vwModelRun) throw new Error("superseded");
       stl.push(bytes);
       got += bytes.length;
-      if (showing) card.textContent = "Opening model\u2026 " + Math.floor(100 * got / total) + "%";
+      if (showing) card.textContent = vwTranslate("Opening model…") + " " + Math.floor(100 * got / total) + "%";
     }).then(function () {
       stl.end();
       mesh.finish();
@@ -466,9 +469,10 @@ function vwModelMillimetres(v) {
 function vwModelDescribe(mesh) {
   var sizes = [0, 1, 2].map(function (i) { return vwModelMillimetres(mesh.max[i] - mesh.min[i]); });
   vwModelSizeLine.textContent = sizes.join(" \u00d7 ") + " mm";
-  vwModelCanvas.setAttribute("aria-label",
-    "3D model, " + sizes.join(" by ") + " millimetres, " + vwModelCount(mesh.triangles) +
-    (mesh.triangles === 1 ? " triangle" : " triangles"));
+  vwModelCanvas.setAttribute("aria-label", vwKorean
+    ? "3D 모델, " + sizes.join(" × ") + "밀리미터, 삼각형 " + vwModelCount(mesh.triangles) + "개"
+    : "3D model, " + sizes.join(" by ") + " millimetres, " + vwModelCount(mesh.triangles) +
+      (mesh.triangles === 1 ? " triangle" : " triangles"));
 }
 
 // ---------------------------------------------------------------------------

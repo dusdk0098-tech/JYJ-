@@ -54,14 +54,15 @@
 
                 <!-- Filled white in the drawable and tinted here, because a ?attr colour
                      resolved inside vector XML depends on the inflation path. -->
-                <ImageView
+                <TextView
                     android:id="@+id/wordmark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="9dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_wordmark"
-                    app:tint="?attr/colorOnSurface" />
+                    android:text="@string/app_name"
+                    android:textAppearance="?attr/textAppearanceTitleLarge"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textStyle="bold" />
             </LinearLayout>
         </FrameLayout>
 
@@ -190,6 +191,45 @@
                     android:textColor="?attr/colorOnSurfaceVariant" />
             </LinearLayout>
         </ScrollView>
+        <LinearLayout
+            android:id="@+id/donationFooter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp"
+            android:background="?attr/colorSurfaceContainerLow">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/donation_message"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="@string/donation_account"
+                android:textAppearance="?attr/textAppearanceLabelLarge"
+                android:textColor="?attr/colorOnSurface" />
+            <TextView
+                android:id="@+id/peditLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                android:text="@string/pedit_website"
+                android:textAppearance="?attr/textAppearanceLabelLarge"
+                android:textColor="?attr/colorPrimary" />
+        </LinearLayout>
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -197,6 +237,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="150dp"
         android:text="@string/open_a_file" />
 </FrameLayout>

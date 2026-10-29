@@ -568,7 +568,7 @@ function markMissing(block, kind) {
   while (block.firstChild) block.removeChild(block.firstChild);
   var box = document.createElement("div");
   box.className = "vw-missing";
-  box.textContent = MISSING[kind] || MISSING.shape;
+  box.textContent = vwTranslate(MISSING[kind] || MISSING.shape);
   block.appendChild(box);
   var slide = block.closest(".slide");
   var width = slide ? slide.offsetWidth : 960;

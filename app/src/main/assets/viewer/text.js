@@ -48,7 +48,8 @@ function showPage() {
     if (page.done) {
       more.hidden = true;
     } else {
-      moreNote.textContent = "Showing the first " + vwFormatSize(shown) + " of this file.";
+      moreNote.textContent = vwKorean ? "파일의 처음 " + vwFormatSize(shown) + "을(를) 표시하고 있습니다."
+        : "Showing the first " + vwFormatSize(shown) + " of this file.";
       more.hidden = false;
       moreBtn.disabled = false;
     }

@@ -1800,6 +1800,7 @@ open class ViewerActivity : AppCompatActivity() {
             web.loadUrl(
                 "https://$ASSET_HOST/assets/viewer/${kind.page}" +
                     "?name=${Uri.encode(name)}&ext=${Uri.encode(ext)}&ranged=$ranged" +
+                    "&lang=${Uri.encode(resources.configuration.locales[0].language)}" +
                     (if (total > 0) "&length=$total" else "") +
                     "&night=$night" +
                     (if (resumeAt > 1) "&resume=$resumeAt" else "") +
